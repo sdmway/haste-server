@@ -9,11 +9,12 @@ var connect_st = require('st');
 var connect_rate_limit = require('connect-ratelimit');
 
 var DocumentHandler = require('./lib/document_handler');
+require('dotenv').config();
 
-// Load the configuration and set some defaults
 const configPath = process.argv.length <= 2 ? 'config.js' : process.argv[2];
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 const apiKey = process.env.APIKEY
+
 config.port = process.env.PORT || config.port || 7777;
 config.host = process.env.HOST || config.host || 'localhost';
 
